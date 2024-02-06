@@ -1,9 +1,10 @@
-# [dicord.gg/souleaks](https://discord.com/invite/souleaks)
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SouHub</title>
+    <title>Shopping Store with PayPal</title>
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,50 +18,106 @@
             padding: 10px;
             text-align: center;
         }
-        nav {
-            background-color: #444;
-            color: #fff;
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
             padding: 10px;
-            text-align: center;
+            background-color: #fff;
         }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
+        .product h3 {
+            margin-top: 0;
         }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            padding: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
+        .cart {
+            border: 1px solid #ccc;
             padding: 10px;
+            background-color: #fff;
+        }
+        .cart h2 {
+            margin-top: 0;
+        }
+        #paypal-button-container {
             text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to SouHub</h1>
+        <h1>Shopping Store with PayPal</h1>
     </header>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </nav>
-    <section>
-        <h2>About Us</h2>
-        <p>SGV SPOOFER 2024</p>
-        <p>SGV SPOOFER 2024</p>
-    </section>
-    <footer>
-        &copy; 2024 music carti
-    </footer>
+    <div class="container">
+        <div id="product-list"></div>
+        <div class="cart">
+            <h2>Cart</h2>
+            <div id="cart-items"></div>
+            <div id="paypal-button-container"></div>
+        </div>
+    </div>
+
+    <script>
+        // Product data
+        const products = [
+            { id: 1, name: "Product 1", price: 10 },
+            { id: 2, name: "Product 2", price: 20 },
+            { id: 3, name: "Product 3", price: 30 }
+        ];
+
+        // Display products
+        const productList = document.getElementById("product-list");
+        products.forEach(product => {
+            productList.innerHTML += `
+                <div class="product">
+                    <h3>${product.name}</h3>
+                    <p>Price: $${product.price}</p>
+                    <button onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+            `;
+        });
+
+        // Cart items
+        let cartItems = [];
+
+        // Function to add item to cart
+        function addToCart(id, name, price) {
+            cartItems.push({ id, name, price });
+            displayCart();
+        }
+
+        // Function to display cart
+        function displayCart() {
+            const cartItemsDiv = document.getElementById("cart-items");
+            cartItemsDiv.innerHTML = "";
+            let total = 0;
+            cartItems.forEach(item => {
+                cartItemsDiv.innerHTML += `
+                    <p>${item.name} - $${item.price}</p>
+                `;
+                total += item.price;
+            });
+            cartItemsDiv.innerHTML += `<p>Total: $${total}</p>`;
+        }
+
+        // PayPal button
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '1.00'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
 </body>
 </html>
