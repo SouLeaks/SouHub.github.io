@@ -56,8 +56,8 @@
     </nav>
     <section>
         <h2>About Us</h2>
-        <p>Vortex likes cock and gsmit likes dick</p>
-        <p>Vortex likes cock and gsmit likes dick</p>
+        <p>SGV SPOOFER 2024</p>
+        <p>SGV SPOOFER 2024</p>
     </section>
     <footer>
         &copy; 2024 music carti
