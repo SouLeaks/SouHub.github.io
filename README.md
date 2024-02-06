@@ -1,6 +1,4 @@
 # [dicord.gg/souleaks](https://discord.com/invite/souleaks)
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,7 +47,7 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <h1>Welcome to SouHub</h1>
     </header>
     <nav>
         <a href="#">Home</a>
@@ -58,11 +56,11 @@
     </nav>
     <section>
         <h2>About Us</h2>
-        <p>This is a simple website created with HTML.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis sapien vitae justo fermentum auctor. Integer maximus, quam vel tincidunt fermentum, urna libero ultricies metus, id facilisis quam mi a est.</p>
+        <p>Vortex likes cock and gsmit likes dick</p>
+        <p>Vortex likes cock and gsmit likes dick</p>
     </section>
     <footer>
-        &copy; 2024 My Simple Website
+        &copy; 2024 music carti
     </footer>
 </body>
 </html>
